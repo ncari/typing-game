@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.App{
+  background-color: whitesmoke;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.Game{
+  box-shadow: 1px;
+  background-color: #F0F1FF;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Game-Info{
+  font-size: 14px;
+  border-bottom: 1px solid #DDDDDD;
+  color: #5E5E5E ;
+}
+
+.Game-Content{
+  width: 50vw;
+  height: 75vh;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Game-Text{
+  font-size: 32px;
+  margin-top: 10px;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.Game-Text .good, .bad, .rest {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.Game-Text .good {
+  color: green;
+  text-decoration: underline;
+}
+.Game-Text  .bad {
+  color: red
+}
+
+.Game-Input {
+  border: 0px;
+  font-size: 24px;
+  padding: 10px 0px;
+  box-shadow: 2px 2px #DDDDDD;
+}
+.Game-Input:focus {
+  outline: none;
 }
