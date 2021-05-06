@@ -19,6 +19,11 @@
   font-size: 14px;
   border-bottom: 1px solid #DDDDDD;
   color: #5E5E5E ;
+  display: flex;
+}
+
+.Game-Info-Time{
+  flex-grow: 1;
 }
 
 .Game-Content{
@@ -57,4 +62,20 @@
 }
 .Game-Input:focus {
   outline: none;
+}
+
+.Game-Start{
+  cursor: pointer;
+  float: right;
+  background-color: #21ba45;
+  box-shadow: 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  color: #ffffff;
+  text-shadow: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px #109930;
 }
