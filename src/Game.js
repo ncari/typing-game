@@ -14,6 +14,9 @@ const Game = (props) => {
     const [tics, setTics] = useState(0);
     const [timer, setTimer] = useState(null);
 
+    const [online, setOnline] = useState(false);
+    const [wsConnection, setWSConnection] = useState(null);
+
     const text = words.reduce((prev,curr) => `${prev}${curr}`, '');
 
     const inputUpdated = (e) => {
@@ -21,6 +24,8 @@ const Game = (props) => {
 
         // check if has finish word
         if(newValue === words[currentWordIndex]){
+            if(online)
+                wsConnection.send(JSON.stringify({action: 'finishWord', payload: newValue}));
             if(currentWordIndex !== words.length - 1)
                 setCurrentWordIndex(currentWordIndex + 1);
             else
@@ -38,6 +43,27 @@ const Game = (props) => {
     }, [active]);
 
     const startGame = () => {
+        if(online){
+            const ws = new WebSocket('ws://localhost:8080');
+            ws.onopen = () => console.log('open');
+            ws.onclose = () => console.log('close');
+            ws.onmessage = (msg) => {
+                const data = JSON.parse(msg.data);
+                if(data.action === "start"){
+                    setWords(data.words);
+                    setActive(true);
+                    setTics(0);
+                    setCharactersCount(0);
+                    setCurrentCharacters('');
+                    setCurrentWordIndex(0);
+                    setTimer(setInterval(() => {
+                        setTics(t => t + 1);
+                    }, timerConfig.ms));
+                }
+            };
+            setWSConnection(ws);
+            return;
+        }
         if(!nextText)
             return;
         setActive(true);
@@ -91,6 +117,13 @@ const Game = (props) => {
                             onClick={() => startGame()}
                         >
                             Start
+                        </button>
+                        <button
+                            className={online ? "Game-Mode active" : "Game-Mode"}
+                            disabled={active}
+                            onClick={() => setOnline(!online)}
+                        >
+                            Multiplayer
                         </button>
                     </div>
                 </div>

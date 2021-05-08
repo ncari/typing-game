@@ -79,3 +79,24 @@
   margin-bottom: 5px;
   box-shadow: 2px 2px #109930;
 }
+
+.Game-Mode{
+  cursor: pointer;
+  float: right;
+  background-color: #5A77FF;
+  box-shadow: 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  color: #ffffff;
+  text-shadow: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px #3B56D5;
+  margin-right: 5px;
+}
+
+.Game-Mode.active {
+  text-decoration: underline;
+}
